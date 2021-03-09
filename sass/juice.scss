@@ -1,0 +1,15 @@
+@import "_header.scss";
+@import "_banner.scss";
+@import "_footer.scss";
+
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: black;
+  overflow-y: hidden;
+  background-image: url('imgs/background.jpg');
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover;
+}

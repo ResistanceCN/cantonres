@@ -1,0 +1,46 @@
+@import "_breakpoints.scss";
+
+header {
+    padding: 20px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba($color: #000000, $alpha: 0.85);
+
+    @media (max-width:$on-phone) {
+        padding: 10px 0px;
+    }
+
+    a {
+        text-decoration: none;
+        color: var(--primary-highlight-color);
+    }
+
+    ul {
+        margin-top: 0.5rem;
+    }
+
+    ul>li {
+        padding: 0.3rem 0;
+    }
+
+    p>img {
+        width: 100%;
+        height: auto;
+    }
+
+    .logo {
+        font-family: "Roboto", Sans;
+        font-size: 1.6rem;
+        font-weight: 300;
+        color: var(--primary-highlight-color);
+        display: flex;
+        align-items: center;
+        margin: 0 40px;
+
+        img {
+            width: 60px;
+            margin: 0 25px;
+        }
+    }
+}

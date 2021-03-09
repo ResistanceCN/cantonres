@@ -1,0 +1,99 @@
+{% import "_macros.html" as macros %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{{ config.title }}{% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% include "_variables.html" %}
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/normalize.css">
+    <link rel="stylesheet" href="{{ get_url(path="juice.css") }}">
+    {% block head %}
+    {% endblock head %}
+</head>
+
+<body>
+    {% block header %}
+    <header class="pos-absolute">
+        {{ macros::render_header() }}
+    </header>
+
+    <div class="banner">
+        <div class="banner-box">
+            <div class="banner-text">
+                <h1>
+                    Canton<br />Resistance
+                </h1>
+                <h2>
+                    广东抵抗军
+                </h2>
+                <h3>
+                    我们的自由岌岌可危|...
+                </h3>
+            </div>
+
+            <div class="banner-link">
+                <div class="banner-link-item">
+                    <a href="https://join.cantonres.com/" target="_blank">加入我们</a>
+                </div>
+                <div class="banner-link-item">
+                    <a href="https://prime-lesson.cantonres.com/" target="_blank">新手指引</a>
+                </div>
+                <div class="banner-link-item">
+                    <a>参与编辑</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock header %}
+
+    <footer class="l-footer">
+        {% block footer -%}
+        <p class="p-copyright">
+            {% if config.extra.copyright -%}
+            {% set content = config.extra.copyright | markdown(inline=true) %}
+            {{ content | safe }}
+            {%- endif %}
+        </p>
+        {%- endblock footer %}
+    </footer>
+</body>
+<script>
+    function highlightNav(heading) {
+        let pathname = location.pathname;
+        document.querySelectorAll(".toc a").forEach((item) => {
+            item.classList.remove("active");
+        });
+        document.querySelector(".toc a[href$='" + pathname + "#" + heading + "']").classList.add("active");
+    }
+
+    let currentHeading = "";
+    window.onscroll = function () {
+        let h = document.querySelectorAll("h1,h2,h3,h4,h5,h6");
+        let elementArr = [];
+
+        h.forEach(item => {
+            if (item.id !== "") {
+                elementArr[item.id] = item.getBoundingClientRect().top;
+            }
+        });
+        elementArr.sort();
+        for (let key in elementArr) {
+            if (!elementArr.hasOwnProperty(key)) {
+                continue;
+            }
+            if (elementArr[key] > 0 && elementArr[key] < 300) {
+                if (currentHeading !== key) {
+                    highlightNav(key);
+                    currentHeading = key;
+                }
+                break;
+            }
+        }
+    }
+</script>
+
+</html>

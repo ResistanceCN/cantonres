@@ -1,0 +1,11 @@
+@import "_breakpoints.scss";
+
+.l-footer {
+    margin-top: 5rem;
+    text-align: center;
+    color: white;
+
+    @media (max-width:$on-phone) {
+        margin-top: 2rem;
+    }
+}
