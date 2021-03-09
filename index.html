@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+    :root {
+        /* Primary theme color */
+        --primary-color: white;
+        /* Primary theme text color */
+        --primary-text-color: #543631;
+        /* Primary theme link color */
+        --primary-link-color: #F9BB2D;
+        /* Secondary color: the background body color */
+        --secondary-color: whitesmoke;
+        --secondary-text-color: #303030;
+        /* Highlight text color of table of content */
+        --toc-highlight-text-color: #d46e13;
+        --primary-highlight-color: #29f1ba;
+        --secondary-highlight-color: #0cb88d;
+    }
+</style>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/normalize.css">
+    <link rel="stylesheet" href="https:&#x2F;&#x2F;resistancecn.github.io&#x2F;cantonres&#x2F;juice.css">
+    
+    
+</head>
+
+<body>
+    
+    <header class="pos-absolute">
+        
+
+<a href="https:&#x2F;&#x2F;resistancecn.github.io&#x2F;cantonres&#x2F;">
+    <div class="logo">
+        <img src="https:&#x2F;&#x2F;resistancecn.github.io&#x2F;cantonres&#x2F;imgs&#x2F;logo.png" alt="logo">
+        Canton Resistance
+    </div>
+</a>
+
+<nav>
+    
+    
+</nav>
+
+    </header>
+
+    <div class="banner">
+        <div class="banner-box">
+            <div class="banner-text">
+                <h1>
+                    Canton<br />Resistance
+                </h1>
+                <h2>
+                    泛广州抵抗军
+                </h2>
+                <h3>
+                    我们的自由岌岌可危...
+                </h3>
+            </div>
+
+            <div class="banner-link">
+                <div class="banner-link-item">
+                    <a href="https://join.cantonres.com/" target="_blank">加入我们</a>
+                </div>
+                <div class="banner-link-item">
+                    <a href="https://prime-lesson.cantonres.com/" target="_blank">新手指引</a>
+                </div>
+                <div class="banner-link-item">
+                    <a>参与编辑</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <footer class="l-footer">
+        <p class="p-copyright">
+            
+            ©2012 - 2021 Canton Resistance
+        </p>
+    </footer>
+</body>
+<script>
+    function highlightNav(heading) {
+        let pathname = location.pathname;
+        document.querySelectorAll(".toc a").forEach((item) => {
+            item.classList.remove("active");
+        });
+        document.querySelector(".toc a[href$='" + pathname + "#" + heading + "']").classList.add("active");
+    }
+
+    let currentHeading = "";
+    window.onscroll = function () {
+        let h = document.querySelectorAll("h1,h2,h3,h4,h5,h6");
+        let elementArr = [];
+
+        h.forEach(item => {
+            if (item.id !== "") {
+                elementArr[item.id] = item.getBoundingClientRect().top;
+            }
+        });
+        elementArr.sort();
+        for (let key in elementArr) {
+            if (!elementArr.hasOwnProperty(key)) {
+                continue;
+            }
+            if (elementArr[key] > 0 && elementArr[key] < 300) {
+                if (currentHeading !== key) {
+                    highlightNav(key);
+                    currentHeading = key;
+                }
+                break;
+            }
+        }
+    }
+</script>
+
+</html>

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://resistancecn.github.io/cantonres/sitemap.xml
