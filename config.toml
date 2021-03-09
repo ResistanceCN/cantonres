@@ -1,5 +1,5 @@
 # The URL the site will be built for
-base_url = "https://cantonres.github.io"
+base_url = "https://resistancecn.github.io/cantonres"
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
